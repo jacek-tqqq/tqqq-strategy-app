@@ -1,0 +1,34 @@
+name: Daily TQQQ Signal
+ 
+on:
+schedule:
+- cron: "15 01 * * 2-6"
+workflow_dispatch:
+ 
+jobs:
+signal-check:
+runs-on: ubuntu-latest
+ 
+steps:
+- name: Download application files
+uses: actions/checkout@v4
+ 
+- name: Install Python
+uses: actions/setup-python@v5
+with:
+python-version: "3.12"
+ 
+- name: Install application requirements
+run: pip install -r requirements.txt
+ 
+- name: Check for a trading signal
+run: python daily_signal.py
+env:
+TICKER: TQQQ
+BUY_DAYS: 50
+SELL_DAYS: 50
+SMTP_HOST: smtp.gmail.com
+SMTP_PORT: 587
+SMTP_USER: ${{ secrets.SMTP_USER }}
+SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+ALERT_TO: ${{ secrets.ALERT_TO }}
