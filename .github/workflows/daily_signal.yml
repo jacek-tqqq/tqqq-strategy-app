@@ -1,5 +1,4 @@
 name: Daily TQQQ Signal
-
 on:
 schedule:
 - cron: "15 01 * * 2-6"
