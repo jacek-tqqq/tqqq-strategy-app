@@ -42,7 +42,7 @@ jobs:
           LOW_BUY_DISCOUNT_PCT: 10
           HIGH_SELL_PCT: 10
 
-          SEND_DAILY_STATUS: true
+          SEND_DAILY_STATUS: false
 
           SMTP_HOST: smtp.gmail.com
           SMTP_PORT: 587
